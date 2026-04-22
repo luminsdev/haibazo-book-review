@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
+from app.routers import authors
 
 app = FastAPI(
     title=settings.app_name,
@@ -18,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/health", tags=["Health"])
 def health_check():
     return {
@@ -27,6 +29,10 @@ def health_check():
         "enviroment": settings.enviroment,
     }
 
+
 @app.get("/", tags=["Health"])
 def root():
-    return {"message" : "HAIBAZO Book Review API. See /docs for Swagger API"}
+    return {"message": "HAIBAZO Book Review API. See /docs for Swagger API"}
+
+
+app.include_router(authors.router, prefix="/api")
