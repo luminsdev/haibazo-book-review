@@ -5,6 +5,8 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     enviroment: str = "development"
 
+    database_url : str
+
     cors_origins: list[str] = ["http://localhost:5173"]
 
     model_config = SettingsConfigDict(
