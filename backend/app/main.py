@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import authors
+from app.routers import authors, books, reviews
 
 app = FastAPI(
     title=settings.app_name,
@@ -26,7 +26,7 @@ def health_check():
         "status": "ok",
         "app": settings.app_name,
         "version": settings.app_version,
-        "enviroment": settings.enviroment,
+        "environment": settings.environment,
     }
 
 
@@ -36,3 +36,5 @@ def root():
 
 
 app.include_router(authors.router, prefix="/api")
+app.include_router(books.router, prefix="/api")
+app.include_router(reviews.router, prefix="/api")
