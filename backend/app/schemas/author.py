@@ -31,3 +31,12 @@ class AuthorResponse(BaseModel):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class AuthorSummary(BaseModel):
+    """Nestes representation - use for Book/Review response and dropdown."""
+
+    id: int
+    name: str
+
+    model_config = ConfigDict(from_attributes=True)
