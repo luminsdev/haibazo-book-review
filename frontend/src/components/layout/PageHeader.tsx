@@ -6,6 +6,7 @@ type Props = {
   description?: string;
   action?: ReactNode;
 };
+
 const PageHeader = ({ section, title, description, action }: Props) => {
   return (
     <header className="mb-14 border-b border-rule pb-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">

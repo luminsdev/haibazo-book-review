@@ -6,8 +6,8 @@ type Item = { to: string; num: string; label: string; end?: boolean };
 const nav: Item[] = [
   { to: "/", num: "00", label: "Overview", end: true },
   { to: "/authors", num: "01", label: "Authors" },
-  { to: "/", num: "02", label: "Books" },
-  { to: "/", num: "03", label: "Review" },
+  { to: "/books", num: "02", label: "Books" },
+  { to: "/reviews", num: "03", label: "Reviews" },
 ];
 
 const Sidebar = () => {
@@ -15,7 +15,7 @@ const Sidebar = () => {
     <aside className="w-64 shrink-0 sticky top-0 h-screen flex flex-col bg-paper-deep border-r border-rule">
       <header className="px-7 pt-9 pb-7 border-b border-rule">
         <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-ink-muted">
-          Est. 2026 - No.01
+          Est. 2026 · No. 01
         </div>
         <div className="mt-4 font-display text-[32px] leading-none font-semibold tracking-tight">
           Haibazo
@@ -24,17 +24,15 @@ const Sidebar = () => {
           Book Review
         </div>
       </header>
-
       <nav className="flex-1 py-3">
         {nav.map((item) => (
           <NavItem key={item.to} {...item} />
         ))}
       </nav>
-
       <footer className="px-7 py-5 border-t border-rule font-mono text-[10px] tracking-[0.2em] uppercase text-ink-faint leading-relaxed">
-        v0.1 / Intern test
+        v0.1 / Intern Test
         <br />
-        Round 02 - 2026
+        Round 02 — 2026
       </footer>
     </aside>
   );
@@ -56,7 +54,7 @@ function NavItem({ to, num, label, end }: Item) {
         >
           <span
             className={cn(
-              "absolute left-0 top-2 bottom-2 w-0.5 transition-colors duration-200",
+              "absolute left-0 top-2 bottom-2 w-[2px] transition-colors duration-200",
               isActive ? "bg-accent" : "bg-transparent",
             )}
             aria-hidden

@@ -1,23 +1,20 @@
 import { Link } from "react-router-dom";
 
-export default function HomePage() {
+const HomePage = () => {
   return (
     <div>
       <div className="font-mono text-xs tracking-[0.25em] uppercase text-ink-muted">
         Issue No. 01 · April 2026
       </div>
-
       <h1 className="mt-5 font-display font-semibold text-[88px] leading-[0.92] tracking-tight max-w-4xl">
         A quiet ledger of{" "}
         <em className="text-accent not-italic font-display">books</em> and the
         people who wrote them.
       </h1>
-
       <p className="mt-10 max-w-lg text-lg text-ink-muted leading-relaxed">
         Three sections. Six screens. One humble goal — keep the catalogue clean,
         the reviews honest, and the authors in order.
       </p>
-
       <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl border-t border-rule pt-10">
         <StatLink num="01" label="Authors" blurb="The voices." to="/authors" />
         <StatLink num="02" label="Books" blurb="The works." to="/books" />
@@ -30,7 +27,9 @@ export default function HomePage() {
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;
 
 function StatLink({
   num,
