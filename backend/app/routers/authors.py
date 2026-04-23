@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.schemas.author import AuthorCreate, AuthorResponse, AuthorUpdate
+from app.models import Author
+from app.schemas.author import AuthorCreate, AuthorResponse, AuthorUpdate, AuthorSummary
 from app.schemas.pagination import PaginatedResponse
 from app.services import author_service
 
@@ -26,6 +28,16 @@ def list_authors(
         page=page,
         page_size=page_size,
     )
+
+
+@router.get(
+    "/options",
+    response_model=list[AuthorSummary],
+    summary="ist all authors for dropdown (no pagination)",
+)
+def list_author_options(db: Session = Depends(get_db)):
+    stmt = select(Author).order_by(Author.name.asc())
+    return list(db.scalars(stmt).all())
 
 
 @router.post(
